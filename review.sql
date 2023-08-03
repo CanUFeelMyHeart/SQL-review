@@ -11,7 +11,12 @@ begin
 		Дальнейшее переменные перечисляются 
 		через запятую с новой строки, если явно не требуется
 		писать declare
+		
+        Ошибка 7.
+		Переменную уместнее назвать "@RowsCount"
+		
 	*/
+    
 	declare @RowCount int = (select count(*) from syn.SA_CustomerSeasonal)
 	declare @ErrorMessage varchar(max)
 
@@ -20,7 +25,6 @@ begin
     /* 	
         Ошибка 3.
         Содержимое скобок переносится на следующую строку
-		
 	*/
 	select 1
 	from syn.ImportFile as f
@@ -54,10 +58,6 @@ begin
 		,cast(cs.DateBegin as date) as DateBegin
 		,cast(cs.DateEnd as date) as DateEnd
 		,cd.ID as ID_dbo_CustomerDistributor
-        /*
-			Ошибка 7.
-			Рекомендуется избегать неявных преобразований в типах данных
-		*/
 		,cast(isnull(cs.FlagActive, 0) as bit) as FlagActive
 	into #CustomerSeasonal
     /*
