@@ -3,17 +3,7 @@ create procedure syn.usp_ImportFileCustomerSeasonal
 as
 set nocount on
 begin
-	/* 	Ошибка 1.
-		{схема} . {Название}[_Постфикс] , где 
-		[_Постфикс] — указывает цель, 
-		для чего данные собираются.
 
-		Ошибка 2.
-		Для объявления переменных declare используется один раз. 
-		Дальнейшее переменные перечисляются 
-		через запятую с новой строки, если явно не требуется
-		писать declare
-	*/
 	declare @RowCount int = (select count(*) from syn.SA_CustomerSeasonal)
 	declare @ErrorMessage varchar(max)
 
